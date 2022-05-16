@@ -1,0 +1,83 @@
+<!-- Start wrapper-->
+<div id="wrapper">
+	<div class="height-100v d-flex align-items-center justify-content-center">
+		<div class="card-authentication2 mx-auto my-5">
+			<div class="card-group">
+				<div class="card mb-0">
+					<div class="bg-signin2"></div>
+					<div class="card-img-overlay rounded-left my-5">
+						<!-- <h2 class="text-white">Lorem</h2>
+						<h1 class="text-white">Ipsum Dolor</h1>
+						<p class="card-text text-white pt-3">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p> -->
+					</div>
+				</div>
+				<div class="card col s12 m3 ">
+					<div class="card-body">
+						<div class="card-content p-6">
+							<div class="text-center">
+								<img src="assets/images/rrlogo.png" alt="logo icon" style="height:80px;width:340px;">
+							</div>
+							<!-- <div class="card-title text-uppercase text-center py-3" >REHABITATION & RESETTLEMENT HOUSING </div> -->
+					
+
+							<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+								
+								<div class="mb-3">
+									<div class="position-relative has-icon-left">
+										<label for="email" class="sr-only">Mobile Number</label>
+										<input type="text" id="email" formControlName="usr_nm" class="form-control"
+											placeholder="Mobile Number" maxlength="10" minlength="10"
+											(keypress)="numericOnly($event)"
+											[ngClass]="{ 'is-invalid': submitted && f.usr_nm.errors }">
+										<div class="form-control-position"> <i class="icon-phone"></i>
+										</div>
+										<div *ngIf="submitted && f.usr_nm.errors" class="invalid-feedback">
+											<div *ngIf="f.usr_nm.errors.required">User Name is required</div>
+										
+										</div>
+									</div>
+								</div>
+								<div class="mb-3">
+									<div class="position-relative has-icon-left">
+										<label for="password" class="sr-only">Password</label>
+										<input [type]="showPassword ? 'text' : 'Password'" class="form-control"
+											formControlName="usr_pwd" id="password" class="form-control"
+											placeholder="Password"
+											[ngClass]="{ 'is-invalid': submitted && f.usr_pwd.errors }">
+										<div class="form-control-position"> <i class="icon-lock"></i>
+										</div>
+										<div *ngIf="!submitted || !f.usr_pwd.errors  "
+											class="form-control-position-right" (click)="onPasswordToggle()"><i
+												class="zmdi"
+												[ngClass]=" {  '  zmdi-eye ' : !showPassword, '  zmdi-eye-off' : showPassword}"></i>
+										</div>
+										<div *ngIf="submitted && f.usr_pwd.errors" class="invalid-feedback">
+											<span *ngIf="f.usr_pwd.errors.required">Password is required</span>
+										</div>
+									</div>
+								</div>
+								<div class="form-row mr-0 ml-0">
+									<div class="form-group col-6">
+										<div class="icheck-material-primary">
+											<input type="checkbox" id="user-checkbox" checked="" />
+											
+										</div>
+									</div>
+									<div class="form-group col-6 text-right">
+										
+									</div>
+								</div>
+								<button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Sign
+									In</button>
+							
+							</form>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--wrapper-->

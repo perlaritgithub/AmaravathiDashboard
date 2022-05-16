@@ -1,0 +1,177 @@
+<div class="container-fluid">
+
+
+    <div class="row pt-2 pb-2">
+        <div class="col-sm-9">
+            <h4 class="page-title">ADD EVENT</h4>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card-body">
+                <div class="page-title-box d-flex align-items-center justify-content-end">
+
+                    <div class="page-title-left">
+                        <button mat-raised-button color="primary" (click)="addevent(addeventModel,0)"
+                            class="button-customize" style="margin-left:300px;">
+                            + Add Events</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card-body">
+                <div class="row toppad">
+                    <div class="col-6">
+                        <mat-form-field>
+                            <mat-label>Filter</mat-label>
+                            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                        </mat-form-field>
+                    </div>
+
+
+                    <div class="mat-elevation-z8" #TABLE style="width:100%">
+
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButton></mat-paginator>
+
+                        <div id="content" #content>
+                            <table id="table-to-copied" matTableExporter #tab mat-table [dataSource]="dataSource"
+                                matSort>
+
+
+                                <ng-container matColumnDef="ID">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                                    <td mat-cell *matCellDef="let row; let i=index"> {{ i+1 }} </td>
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="Location">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+                                    <td mat-cell *matCellDef="let row">
+                                        {{row.location}} </td>
+                                </ng-container>
+
+
+                                <ng-container matColumnDef="startingtime">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Starting Time</th>
+                                    <td mat-cell *matCellDef="let row; let i=index">
+                                        {{row.startingtime}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="endingtime">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Ending Time</th>
+                                    <td mat-cell *matCellDef="let row; let i=index">
+                                        {{row.endingtime}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="edit">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
+                                    <td mat-cell *matCellDef="let row; let i=index">
+                                        <i class="material-icons cust-mat-icon"
+                                            (click)="addevent(addeventModel, row)">edit</i>
+                                    </td>
+                                </ng-container>
+                                <ng-container matColumnDef="delete">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
+                                    <td mat-cell *matCellDef="let row; let i=index">
+                                        <i class="material-icons cust-mat-icon" (click)="deleteAlert(row.id)">delete</i>
+                                    </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                                <!-- Row shown when there is no matching data. -->
+                                <tr class="mat-row" *matNoDataRow>
+                                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                    </div>
+
+                    <br><br>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <ng-template #addeventModel let-modal>
+        <div class="modal-header">
+            <h5 class="modal-title mt-0">Add Events</h5>
+            <button type="button" class="close" aria-hidden="true" (click)="modalDismiss()">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form (ngSubmit)="addeventSubmit()" [formGroup]="addeventForm">
+
+
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" formControlName="location"
+                                            [ngClass]="{'is-invalid': submitted && addeventFormCnt.location.errors}"
+                                            placeholder="Enter Location" />
+                                        <div *ngIf="submitted && addeventFormCnt.location.errors"
+                                            class="invalid-feedback">
+                                            <span *ngIf="addeventFormCnt.location.errors.required">Please Enter
+                                                Location</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Starting Time </label>
+                                        <input type="time" class="form-control" formControlName="startingtime"
+                                            [ngClass]="{'is-invalid': submitted && addeventFormCnt.startingtime.errors}"
+                                            placeholder="Enter Starting Time" />
+                                        <div *ngIf="submitted && addeventFormCnt.startingtime.errors"
+                                            class="invalid-feedback">
+                                            <span *ngIf="addeventFormCnt.startingtime.errors.required">Please Enter
+                                                Starting Time</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="mb-3 col-6">
+                                        <label class="form-label">Ending Time </label>
+                                        <input type="time" class="form-control" formControlName="endingtime"
+                                            [ngClass]="{'is-invalid': submitted && addeventFormCnt.endingtime.errors}"
+                                            placeholder="Enter Ending Time" />
+                                        <div *ngIf="submitted && addeventFormCnt.endingtime.errors"
+                                            class="invalid-feedback">
+                                            <span *ngIf="addeventFormCnt.endingtime.errors.required">Please Enter Ending
+                                                Time</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" (click)="modalDismiss()">Close</button>
+                                    <button type="reset" class="btn btn-secondary waves-effect">Reset</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ng-template>
+
+</div>

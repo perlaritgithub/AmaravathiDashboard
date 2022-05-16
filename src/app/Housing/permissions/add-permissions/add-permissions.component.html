@@ -1,0 +1,103 @@
+<div class="container-fluid">
+    <!-- Breadcrumb-->
+    <div class="row pt-2 pb-2">
+      <div class="col-sm-9">
+        <h4 class="page-title" style="font-size:30px;">Add Permissions</h4>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javaScript:;">Permissions</a>
+          </li>
+          <!-- <li class="breadcrumb-item"><a href="javaScript:;">UI Elements</a>
+          </li> -->
+          <li class="breadcrumb-item active" aria-current="page">Add Permissions</li>
+        </ol>
+      </div>
+      <!-- <div class="col-sm-3">
+        <div ngbDropdown class="btn-group float-sm-right">
+          <button type="button" class="btn btn-outline-danger"><i class="fa fa-cog mr-1"></i> Setting</button>
+          <button type="button" class="btn btn-danger" id="dropdownBasic5" ngbDropdownToggle> <span class="caret"></span>
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic5">
+                <a href="javaScript:;" ngbDropdownItem>Action</a>
+            <a href="javaScript:;" ngbDropdownItem>Another action</a>
+            <a href="javaScript:;" ngbDropdownItem>Something else here</a>
+            <div class="dropdown-divider"></div>
+            <a href="javaScript:;" ngbDropdownItem>Separated link</a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  
+    <div class="row">
+      <div class="col-lg-12">
+          <mat-card class="mat-elevation-z6 set">
+              <mat-list>
+                <mat-label><h5 class="heading" > Add New Permissions</h5>
+                  <!-- <mat-checkbox labelPosition="after" [checked]="allSelected" (change)="toggleSelectAll($event,'parts' )">Select
+                    All
+                  </mat-checkbox> -->
+                </mat-label>
+                <hr />
+               <div class="row">
+                 <div class="col-6">
+                   <div class="mb-3">
+                     <!-- <label for="validationCustom01">Select User Name</label> -->
+                     <select style="border-radius: 2px solid blue;"  class="form-control" id="default-select" (change)="getUserPermissions($event.target.value, 0)" bindLabel="usr_nm" placeholder="" >
+                      <option value="default">Select</option>
+                      <option [value]="item.usr_id" *ngFor="let item of allPermissionsData">
+                         {{item.usr_nm}}
+                       </option>
+                     </select>
+                   </div>
+                 </div>
+                 <div class="col-6">
+                   <div class="mb-3">
+                    <!-- <button mat-raised-button  color="primary" (click)="getPermissions()"  class="button-customize">+ Add Permissions</button> -->
+                   </div>
+  
+                </div>
+               </div>
+  
+  
+                <!-- <mat-list-item>
+                  <mat-checkbox  labelPosition="after"  >
+                    Select All</mat-checkbox>
+                </mat-list-item> -->
+                <hr />
+  
+                <div class="row">
+                  <div class="col-12" *ngFor="let roles of userPermissionsData" >
+                    <h5> {{ roles.menu_cat_nm }} 
+                      <!-- <span>
+                           <mat-checkbox (change)="selectall()"></mat-checkbox>
+                      </span> -->
+                    </h5>
+
+                   
+                    <div class="row">
+                      <div class="col-4" *ngFor="let item of roles.reportdata">
+                        <mat-list-item    class="h_35">
+                          <mat-checkbox  (change)="rolesChanged(item.carrer_menu_id, $event)" >
+                            {{ item.menu_nm }}
+                          </mat-checkbox>
+                        </mat-list-item>
+                      </div>
+  
+                    </div>
+                    <hr/>
+                  </div>
+  
+                </div>
+  
+              </mat-list>
+              <div class="modal-footer justify-content-center" >
+                <!-- <button type="button" class="btn btn-primary" (click)="modalDismiss()">Close</button> -->
+                <button mat-raised-button  color="primary" *ngIf="addPermissionsData.length" (click)="submitPermissions()"  class="button-customize">+ Add Permissions</button>
+                <!-- <button type="submit" class="btn btn-primary" *ngIf="addPermissionsData.length" (click)="saveResponse()">Save</button> -->
+              </div>
+            </mat-card>
+  
+      </div>
+    </div>
+  
+  </div>
+  

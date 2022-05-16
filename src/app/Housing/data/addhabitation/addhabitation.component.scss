@@ -1,0 +1,122 @@
+table {
+  width:100%;
+}
+
+.mat-form-field {
+  /* font-size: 14px; */
+  width: 50%;
+}
+
+th {
+  // color: rgb(247, 7, 167);
+  color:black;
+  font-size:16px;
+  font-weight: bold;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+td{
+  // font-weight:bold;
+  font-size:14px;
+  color:grey;
+}
+
+::ng-deep .mat-icon {
+  height: 28px !important;
+  width: 28px !important;
+  font-size: 28px !important;
+}
+
+.button-customize {
+  height: 2.5rem;
+  width: 9rem;
+  text-align: center;
+  font-family: Gilroy !important;
+  font-size: 1rem !important;
+}
+
+.button-border-primary {
+  border-color: #e21b4e !important;
+}
+
+.button-border-accent {
+  border-color: #1f55ae !important;
+}
+@media print {
+  .mat-drawer-content {
+    height: auto !important;
+  }
+  .mat-drawer-container {
+    overflow: inherit !important;
+  }
+  perfect-scrollbar {
+    height: auto;
+    max-height: none;
+  }
+  mat-sidenav-container {
+    overflow: inherit !important;
+  }
+}
+.btns {
+  margin: 5px;
+  text-align: end;
+}
+.print {
+  text-align: end;
+  color: white;
+}
+.pdf{
+  text-align: center;
+  color: white;
+}
+.cust-icon{
+  padding: 5px;
+}
+
+.cust-mat-icon {
+  // color:#3f51b5;
+  color: blue;
+  zoom: 1.5;
+  cursor: pointer;
+}
+.title{
+  text-align: center;
+}
+.cust-icon {
+  // color:#3f51b5;
+  color: blue;
+  zoom: 1;
+  cursor: pointer;
+}
+
+
+#percent-sign {
+  top: 39%;
+  left: 85%;
+  color: #555;
+  position: absolute;
+  z-index: 1;
+}
+.center-screen {
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+min-height: 5vh;
+font-family: Serif;
+font-size:28px;
+font-weight:bold;
+color:blue;
+}
+.pagination{
+color:brown;
+font-size:16px;
+font-weight:bold;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.button_css{
+ 
+  font-weight:bold;
+  font-size:18px;
+  
+}
+

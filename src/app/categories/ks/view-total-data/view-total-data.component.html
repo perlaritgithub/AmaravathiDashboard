@@ -1,0 +1,31 @@
+<form (ngSubmit)="addsub()" [formGroup]="addform">
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Image</th>
+            <th>Category</th>
+            <th>Subcategory</th>
+            <th>ItemName</th>
+            <th>ItemDescription</th>
+            <th>AddMeasurements</th>
+            <th>AddKeywords</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of Items let i= index">
+            <td>{{i+1}}</td>
+            <td> <img [src]="p.image" height="100px" width="100px" alt=""> </td>
+            <td>{{ p.cate_name }}</td>
+            <td>{{ p.sub_cate_name }}</td>
+            <td>{{ p.ItemName }}</td>
+            <td>{{ p.ItemDescription }}</td>
+            <td>{{ p.AddMeasurements }}</td>
+            <td>{{ p.AddKeywords }}</td>
+           
+        </tr>
+    </tbody>
+</table>
+<button (click)="getform()">getdata</button>
+</form>

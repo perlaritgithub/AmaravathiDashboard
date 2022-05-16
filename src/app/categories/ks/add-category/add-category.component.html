@@ -1,0 +1,27 @@
+
+<form (ngSubmit)="addsub()" [formGroup]="addform">
+    <div class="form-group">
+        <label for="name1">name</label>
+        <input type="text" class="form-control" id="name1" formControlName="name">
+        </div>
+        <button type="submit" (click)="getform()" mat-raised-button color="primary">Submit Category</button>
+        </form>
+       
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Category Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of category let i= index">
+                    <td>{{i+1}}</td>
+                    <!-- <td>{{ p.id }}</td> -->
+                    <td>{{ p.name }}</td>
+                   
+                </tr>
+            </tbody>
+        </table>
